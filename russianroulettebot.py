@@ -1,12 +1,8 @@
-from telethon import events
-from telethon.tl.functions.messages import SetInlineBotResultsRequest
-from telethon.tl.types import InputBotInlineMessageText, InputBotInlineResult
-import random
-import os
-from telethon import TelegramClient
 import logging
+import os
+import random
 
-
+from telethon import TelegramClient, events
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
     level=logging.INFO)
