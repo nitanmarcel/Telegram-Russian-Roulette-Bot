@@ -19,7 +19,8 @@ bot = TelegramClient("russianroulette", API_ID, API_HASH)
 
 bot.start(bot_token=TOKEN)
 
-@bot.on(events.NewMessage(incoming=True, pattern="^\/start"))
+
+@bot.on(events.NewMessage(incoming=True, pattern=r"^\/start"))
 async def start(event):
     await event.reply("Use me inline!")
 
@@ -30,13 +31,13 @@ async def roulette(event):
     user = await bot.get_entity(event.query.user_id)
     user_name = "@" + user.username if user.username else user.first_name
     deaths = [f"{user_name}'s guts were spilled all over the floor'",
-                f"{user_name} just got killed...",
-                f"{user_name} just got served!",
-                f"{user_name} bites the dust"]
+              f"{user_name} just got killed...",
+              f"{user_name} just got served!",
+              f"{user_name} bites the dust"]
 
     escapes = [f"{user_name} will live to see another day",
-           f"{user_name} escaped death",
-           f"{user_name} just got lucky"]
+               f"{user_name} escaped death",
+               f"{user_name} just got lucky"]
 
     if random.randint(1, 6) == 6:
         result = random.choice(deaths)
